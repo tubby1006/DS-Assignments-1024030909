@@ -1,8 +1,29 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 using namespace std;
+
+// Custom reverse function
+void customReverse(string &s) {
+    int i = 0, j = s.size() - 1;
+    while (i < j) {
+        swap(s[i], s[j]);
+        i++;
+        j--;
+    }
+}
+
+// Bubble sort for strings
+void bubbleSort(vector<string> &arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
 
 int main() {
     char choice;
@@ -22,7 +43,7 @@ int main() {
     else if (choice == 'b') {
         string s;
         cin >> s;
-        reverse(s.begin(), s.end());
+        customReverse(s);
         cout << s;
     } 
     else if (choice == 'c') {
@@ -40,7 +61,7 @@ int main() {
         cin >> n;
         vector<string> arr(n);
         for (int i = 0; i < n; i++) cin >> arr[i];
-        sort(arr.begin(), arr.end());
+        bubbleSort(arr);
         for (string s : arr) cout << s << " ";
     } 
     else if (choice == 'e') {
